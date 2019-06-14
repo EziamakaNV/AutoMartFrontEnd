@@ -46,5 +46,6 @@ const submitForm = async () => {
   } catch (error) {
     errorMessageContainer.style.display = 'block';
     errorMessageContainer.textContent = `${error}`;
+    modal.style.display = 'none';
   }
 };
