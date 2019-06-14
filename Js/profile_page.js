@@ -38,7 +38,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   errorMessage.style.display = 'block';
   try {
     loader.style.display = 'block';
-    const response = await fetch('http://automobile-mart.herokuapp.com/api/v2/car?status=available', {
+    const response = await fetch('https://automobile-mart.herokuapp.com/api/v2/car?status=available', {
       credentials: 'include',
       method: 'GET',
     });
@@ -47,7 +47,7 @@ window.addEventListener('DOMContentLoaded', async () => {
       if (responseBody.data.length !== 0) {
         responseBody.data.forEach((car) => {
           adContainer.insertAdjacentHTML('afterbegin', `
-            <a href='/car?car_id=${car.id}'>
+            <a href='/specific_car.html?car_id=${car.id}'>
             <div class="pr-ad" id="${car.id}">
                 <figure>
                     <img class='ad-img' src='${car.imageUrl || 'Images/toyota_camry.jpg'}' alt = 'Car'>
@@ -103,7 +103,7 @@ const filter = async () => {
         }
         responseBody.data.forEach((car) => {
           adContainer.insertAdjacentHTML('afterbegin', `
-            <a href='/car?car_id=${car.id}'>
+            <a href='/specific_car.html?car_id=${car.id}'>
             <div class="pr-ad" id="${car.id}">
                 <figure>
                     <img class='ad-img' src='${car.imageUrl || 'Images/toyota_camry.jpg'}' alt = 'Car'>
