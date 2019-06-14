@@ -20,7 +20,7 @@ const submitForm = async () => {
       email,
       password,
     };
-    const response = await fetch('https:automobile-mart.herokuapp.com/api/v2/auth/signin', {
+    const response = await fetch('https://automobile-mart.herokuapp.com/api/v2/auth/signin', {
       credentials: 'include',
       method: 'POST',
       headers: {
