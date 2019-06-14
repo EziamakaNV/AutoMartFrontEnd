@@ -522,3 +522,8 @@ nav ul {
       left: 0;
       bottom: 0;
   }
+
+  .bottom-buffer {
+      height: 10vh;
+      width: 100%;
+  }

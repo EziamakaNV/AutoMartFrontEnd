@@ -38,7 +38,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   errorMessage.style.display = 'block';
   try {
     loader.style.display = 'block';
-    const response = await fetch('/api/v1/car?status=available', {
+    const response = await fetch('http://automobile-mart.herokuapp.com/api/v2/car?status=available', {
       credentials: 'include',
       method: 'GET',
     });
@@ -47,7 +47,7 @@ window.addEventListener('DOMContentLoaded', async () => {
       if (responseBody.data.length !== 0) {
         responseBody.data.forEach((car) => {
           adContainer.insertAdjacentHTML('afterbegin', `
-            <a href='/car/${car.id}' id='${car.id}'>
+            <a href='/car?car_id=${car.id}'>
             <div class="pr-ad" id="${car.id}">
                 <figure>
                     <img class='ad-img' src='${car.imageUrl || 'Images/toyota_camry.jpg'}' alt = 'Car'>
@@ -68,20 +68,21 @@ window.addEventListener('DOMContentLoaded', async () => {
         loader.style.display = 'none';
       }
     } else {
-      window.location.assign('/profile');
+      window.location.assign('profile_page.html');
     }
   } catch (error) {
     // Reload the page if there's an error
-    window.location.assign('/profile');
+    window.location.assign('profile_page.html');
   }
 });
 
 const filter = async () => {
+  errorMessage.style.display = 'none';
   modal.style.display = 'none';
   loader.style.display = 'block';
 
   try {
-    const response = await fetch(`/api/v1/car?status=available&min_price=${minPrice.value}&max_price=${maxPrice.value}`, {
+    const response = await fetch(`https://automobile-mart.herokuapp.com/api/v2/car?status=available&min_price=${minPrice.value}&max_price=${maxPrice.value}`, {
       credentials: 'include',
       method: 'GET',
     });
@@ -102,7 +103,7 @@ const filter = async () => {
         }
         responseBody.data.forEach((car) => {
           adContainer.insertAdjacentHTML('afterbegin', `
-            <a href='/car/${car.id}' id='${car.id}'>
+            <a href='/car?car_id=${car.id}'>
             <div class="pr-ad" id="${car.id}">
                 <figure>
                     <img class='ad-img' src='${car.imageUrl || 'Images/toyota_camry.jpg'}' alt = 'Car'>
@@ -153,3 +154,10 @@ window.addEventListener('DOMContentLoaded', () => {
   const user = JSON.parse(userJSON);
   document.querySelector('#client-name').textContent = `Welcome ${user.firstName} ${user.lastName}`;
 });
+
+const logout = async () => {
+  await fetch('https://automobile-mart.herokuapp.com/logout', {
+    credentials: 'include',
+    method: 'GET',
+  });
+};
