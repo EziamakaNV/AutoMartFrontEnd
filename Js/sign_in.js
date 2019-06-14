@@ -20,7 +20,7 @@ const submitForm = async () => {
       email,
       password,
     };
-    const response = await fetch('/api/v1/auth/signin', {
+    const response = await fetch('https:automobile-mart.herokuapp.com/api/v2/auth/signin', {
       credentials: 'include',
       method: 'POST',
       headers: {
@@ -31,7 +31,7 @@ const submitForm = async () => {
     const responseBody = await response.json();
 
     if (response.status === 200) {
-      window.location.assign('/profile');
+      window.location.assign('profile_page.html');
     } else {
       modal.style.display = 'none';
       errorMessageContainer.style.display = 'block';
