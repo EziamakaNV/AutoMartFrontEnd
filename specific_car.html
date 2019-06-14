@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <title>Specific Car</title>
+</head>
+
+<body>
+    <header class='header flex-container'>
+        <div class='menu-logo-container'>
+            <div class='dropdown'>
+                <div class='menu-container' onclick='menuBarAnimation(this)'>
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+                <div id="myDropDown" class="dropdown-content">
+                    <a href="/profile">Profile</a>
+                    <a href="/profile/createAds">Create Ads</a>
+                    <a href="/profile/myAds">My Ads</a>
+                    <a href='/profile/myOrders'>My Orders</a>
+                    <a href="/logout">Logout</a>
+                </div>
+            </div>
+            <a href="/profile" class="previousIcon anchor-tag logo">←</a>
+            <a href='/profile' class='anchor-tag logo'>Car Ad</a>
+        </div>
+        <nav class='flex-container justify-right'>
+            <ul>
+                <li><a href="/profile/createAds">Create Ad</a></li>
+                <li><a href="/profile/myAds">My Ads</a></li>
+                <li><a href='/profile/myOrders'>My Orders</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1 class='error-message-div'>Issue getting car details</h1>
+        <section id="spec-car-ad-cntnr">
+            <div class='scac-div1'>
+                <figure>
+                    <img class='ad-img' src=''>
+                </figure>
+            </div>
+            <div class="divider scac-div1"></div>
+            <div class="scac-div1">
+                <h3 id="itemPrice"></h3>
+                <p class="" id="itemDescription"></p>
+            </div>
+            <div class="divider scac-div1"></div>
+            <div class="scac-div1">
+                <h3>Details</h3>
+                <div class="scac-div2">
+                    <span>Make</span>
+                    <span id = 'manufacturer' class='scac-span'></span>
+                </div>
+                <div class="scac-div2">
+                    <span>Model</span>
+                    <span id = 'model' class='scac-span'></span>
+                </div>
+                <div class="scac-div2">
+                    <span>Body Type</span>
+                    <span id = 'bodyType' class='scac-span'></span>
+                </div>
+                <div class="scac-div2">
+                    <span>State</span>
+                    <span id = 'state' class='scac-span'></span>
+                </div>
+                <div class="divider scac-div1"></div>
+                <div class="scac-div2">
+                    <h3>Description</h3>
+                    <p id = 'description'></p>
+                </div>
+            </div>
+            <div class="divider scac-div1"></div>
+            <div class="scac-div1">
+                <button id='myBtn2'>SUBMIT OFFER</button>
+            </div>
+            <div class="divider scac-div1"></div>
+            <div class="scac-div1">
+                <button id='myBtn'>REPORT THIS AD</button>
+            </div>
+        </section>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h1 class='call-to-action'>Item Report</h1>
+                <form onsubmit="event.preventDefault()" class = 'form-structure'>
+                    <select name='flagReasons' id='flagReason' required>
+                        <option value=''>Pick A Reason</option>
+                        <option value='offensive content'>Offensive Content</option>
+                        <option value='fraud'>Fraud</option>
+                        <option value='duplicate ad'>Duplicate Ad</option>
+                        <option value='other'>Other</option>
+                    </select>
+                    <br>
+                    <br>
+                    <textarea max-length='500' name='Comment' placeholder="Comment" id = 'flagDescription'></textarea>
+                    <button class="button" onclick='sendComplaint()'>SEND COMPLAINT</button>
+                </form>
+            </div>
+        </div>
+        <div id="myModal2" class="modal">
+            <div class="modal-content filter">
+                <span class="close2">&times;</span>
+                <h1 class='call-to-action'>PURCHASE ORDER</h1>
+                <h2 class='call-to-action' id = 'po-description'>FOR: XXX XXX</h2>
+                <h2 class='call-to-action' id = 'po-price'>PRICE: 999999</h2>
+                <form class='form-structure' onsubmit="event.preventDefault()">
+                    <h2 class='form-headers'>OFFER</h2>
+                    <div>
+                        <label for='offered_price'>Offered Price</label>
+                        <input type='number' required name='offered_price' id='offeredPrice'>
+                    </div>
+                    <button class='button' onclick='placeOffer()'>PLACE OFFER</button>
+                </form>
+            </div>
+        </div>
+        <div id="loaderModal" class="modal">
+            <div class="modal-content filter loader">
+                
+            </div>
+        </div>
+    </main>
+    <footer class='flex-container justify-content-center'>
+        <div>
+            <span>AutoMart C 2019</span>
+        </div>
+    </footer>
+    <script src='/Js/specific_car.js'></script>
+</body>
+
+</html>
