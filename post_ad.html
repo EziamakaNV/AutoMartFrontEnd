@@ -18,9 +18,10 @@
                         <div class="bar3"></div>
                     </div>
                     <div id="myDropDown" class="dropdown-content">
-                        <a href="/UI/my_ads.html">My Ads</a>
+                        <a href="profile_page.html">Profile</a>
+                        <a href="my_ads.html">My Ads</a>
                         <a href='my_orders.html'>My Orders</a>
-                        <a href="/UI/landing_page.html">Logout</a>
+                        <a href="#" onclick="logout()">Logout</a>
                     </div>
                 </div>
                 <a href="profile_page.html" class="previousIcon anchor-tag logo">←</a>
@@ -28,16 +29,18 @@
             </div>
             <nav class='flex-container justify-right'>
                 <ul>
-                    <li><a href="/UI/my_ads.html">My Ads</a></li>
+                    <li><a href="profile_page.html">Profile</a></li>
+                    <li><a href="my_ads.html">My Ads</a></li>
                     <li><a href='my_orders.html'>My Orders</a></li>
-                    <li><a href="/UI/landing_page.html">Logout</a></li>
+                    <li><a href="landing_page.html">Logout</a></li>
                 </ul>
             </nav>
         </header>
     <main>
         <h1 class="call-to-action">POST YOUR CAR AD</h1>
+        <h1 class='error-message-div'>Issue getting car details</h1>
         <section id='post-ad-container'>
-            <form class='form-structure'>
+            <form id= 'form' class='form-structure' action="http://localhost:5000/api/v2/car" enctype="multipart/form-data" method="POST" onsubmit="event.preventDefault()">
                 <h2 class='form-headers'>CAR DETAILS</h2>
                 <div>
                     <label for='manufacturer'>Manufacturer</label>
@@ -48,8 +51,8 @@
                     <input type='text' required name='model' id='model'>
                 </div>
                 <div>
-                    <label for='body-type'>Body-Type</label>
-                    <select name='body-type' required>
+                    <label for='bodyType'>Body-Type</label>
+                    <select name='bodyType' id = 'bodyType' required>
                         <option value=''></option>
                         <option value='car'>Car</option>
                         <option value='truck'>Truck</option>
@@ -58,8 +61,15 @@
                     </select>
                 </div>
                 <div>
+                    <label for='status'>Status</label>
+                    <select name='status' id = 'status' required>
+                        <option value=''></option>
+                        <option value='available'>available</option>
+                    </select>
+                </div>
+                <div>
                     <label for='state'>State</label>
-                    <select name='state' required>
+                    <select name='state' id='state' required>
                         <option value=''></option>
                         <option value='new'>New</option>
                         <option value='used'>Used</option>
@@ -75,14 +85,20 @@
                 <h2 class='form-headers'>UPLOAD PHOTOS</h2>
                 <div>
                     <!-- <label for='car-photo'>Photos</label> -->
-                    <input type='file' id='carPhoto' name='car-photo' accept='image/png, image/jpeg'>
+                    <input type='file' id='carImage' accept='image/png, image/jpeg', name= "carImage" required>
                 </div>
                 <div class="divider"></div>
-                <button class='button'>POST NOW</button>
+                <button class='button' onclick="createAd()">POST NOW</button>
             </form>
         </section>
     </main>
-    <footer class='flex-container justify-content-center'>
+    <div id="loaderModal" class="modal">
+        <div class="modal-content filter loader">
+            
+        </div>
+    </div>
+    <div class="bottom-buffer"></div>
+    <footer class='flex-container justify-content-center fixed-bottom'>
         <div>
             <span>AutoMart C 2019</span>
         </div>

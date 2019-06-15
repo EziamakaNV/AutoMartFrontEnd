@@ -50,7 +50,7 @@ window.addEventListener('DOMContentLoaded', async () => {
             <a href='/specific_car.html?car_id=${car.id}'>
             <div class="pr-ad" id="${car.id}">
                 <figure>
-                    <img class='ad-img' src='${car.imageUrl || 'Images/toyota_camry.jpg'}' alt = 'Car'>
+                    <img class='ad-img' src='${car.image_url || 'Images/toyota_camry.jpg'}' alt = 'Car'>
                 </figure>
                 <div class="pr-ad-details">
                     <p class="item-price">N ${car.price}</p>
@@ -106,7 +106,7 @@ const filter = async () => {
             <a href='/specific_car.html?car_id=${car.id}'>
             <div class="pr-ad" id="${car.id}">
                 <figure>
-                    <img class='ad-img' src='${car.imageUrl || 'Images/toyota_camry.jpg'}' alt = 'Car'>
+                    <img class='ad-img' src='${car.image_url || 'Images/toyota_camry.jpg'}' alt = 'Car'>
                 </figure>
                 <div class="pr-ad-details">
                     <p class="item-price">N ${car.price}</p>
