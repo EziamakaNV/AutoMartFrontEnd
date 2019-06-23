@@ -20,85 +20,97 @@
                     <div class="bar3"></div>
                 </div>
                 <div id="myDropDown" class="dropdown-content">
+                    <a href="profile_page.html">View Ads</a>
                     <a href="post_ad.html">Create Ads</a>
                     <a href="my_ads.html">My Ads</a>
-                    <a href="landing_page.html">Logout</a>
+                    <a href='my_orders.html'>My Orders</a>
+                    <a href="#" onclick='logout()'>Logout</a>
                 </div>
             </div>
-            <a href="my_ads.html" class="previousIcon anchor-tag logo">←</a>
-            <a href='my_ads.html' class='anchor-tag logo'>My Ad</a>
+            <a href="profile_page.html" class="previousIcon anchor-tag logo">←</a>
+            <a href='profile_page.html' class='anchor-tag logo'>Car Ad</a>
         </div>
         <nav class='flex-container justify-right'>
             <ul>
+                <li><a href="profile_page.html">View Ads</a></li>
                 <li><a href="post_ad.html">Create Ad</a></li>
                 <li><a href="my_ads.html">My Ads</a></li>
-                <li><a href="landing_page.html">Logout</a></li>
+                <li><a href='my_orders.html'>My Orders</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </nav>
     </header>
     <main>
+        <h1 class='error-message-div'>Issue getting car details</h1>
         <section id="spec-car-ad-cntnr">
             <div class='scac-div1'>
                 <figure>
-                    <img class='ad-img' src='Images/toyota_camry.jpg'>
+                    <img class='ad-img' src=''>
                 </figure>
             </div>
             <div class="divider scac-div1"></div>
             <div class="scac-div1">
-                <h3 id="itemPrice">N1,500,000</h3>
-                <p class="" id="itemDescription">Neat Reg Toyota Camry</p>
+                <h3 id="itemPrice"></h3>
+                <p class="" id="itemDescription"></p>
             </div>
             <div class="divider scac-div1"></div>
             <div class="scac-div1">
                 <h3>Details</h3>
                 <div class="scac-div2">
                     <span>Make</span>
-                    <span class='scac-span'>Toyota</span>
+                    <span id = 'manufacturer' class='scac-span'></span>
                 </div>
                 <div class="scac-div2">
                     <span>Model</span>
-                    <span class='scac-span'>Camry</span>
+                    <span id = 'model' class='scac-span'></span>
                 </div>
                 <div class="scac-div2">
                     <span>Body Type</span>
-                    <span class='scac-span'>Car</span>
+                    <span id = 'bodyType' class='scac-span'></span>
                 </div>
                 <div class="scac-div2">
                     <span>State</span>
-                    <span class='scac-span'>Used</span>
+                    <span id = 'state' class='scac-span'></span>
+                </div>
+                <div class="scac-div2">
+                    <span>Status</span>
+                    <span id = 'status' class='scac-span'></span>
                 </div>
                 <div class="divider scac-div1"></div>
                 <div class="scac-div2">
                     <h3>Description</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos veniam, ullam laudantium laborum
-                        libero ex magnam consequatur deserunt voluptatum, temporibus beatae voluptate assumenda est?
-                        Quibusdam dicta blanditiis nihil fugiat unde!</p>
+                    <p id = 'description'></p>
                 </div>
             </div>
             <div class="divider scac-div1"></div>
             <div class="scac-div1">
-                <button>MARK AS SOLD</button>
+                <button id='myBtn2' onclick="markAsSold()">MARK AS SOLD</button>
             </div>
             <div class="divider scac-div1"></div>
             <div class="scac-div1">
-                <button id='myBtn' onclick="window.location.assign('/UI/update_price.html')">UPDATE PRICE</button>
+                <button id='myBtn'>UPDATE PRICE</button>
             </div>
         </section>
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <h1 class="call-to-action">EDIT</h1>
-                    <form class='form-structure'>
+                    <form class='form-structure' onsubmit="event.preventDefault()">
                         <h2 class='form-headers'>UPDATE PRICE</h2>
                         <div>
                             <label for='price'>Price</label>
                             <input type='number' required name='price' id='price'>
                         </div>
-                        <button class='button'>UPDATE</button>
+                        <button class='button' onclick="updatePrice()">UPDATE</button>
                     </form>
             </div>
         </div>
     </main>
+    <div id="loaderModal" class="modal">
+        <div class="modal-content filter loader">
+            
+        </div>
+    </div>
     <footer class='flex-container justify-content-center'>
         <div>
             <span>AutoMart C 2019</span>

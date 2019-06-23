@@ -5,19 +5,12 @@ const menuBarAnimation = (menu) => {
 };
 
 const modal = document.getElementById('myModal');
-
 const btn = document.getElementById('myBtn');
-
 const span = document.getElementsByClassName('close')[0];
-
 const adContainer = document.querySelector('#pr-ad-cntnr');
-
 const minPrice = document.querySelector('#minPrice');
-
 const maxPrice = document.querySelector('#maxPrice');
-
 const loader = document.querySelector('#loaderModal');
-
 const errorMessage = document.querySelector('.error-message-div');
 
 btn.onclick = () => {
