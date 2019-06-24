@@ -61,11 +61,11 @@ window.addEventListener('DOMContentLoaded', async () => {
         loader.style.display = 'none';
       }
     } else {
-      window.location.assign('profile_page.html');
+      window.location.assign('index.html');
     }
   } catch (error) {
     // Reload the page if there's an error
-    window.location.assign('profile_page.html');
+    window.location.assign('index.html');
   }
 });
 
@@ -153,4 +153,5 @@ const logout = async () => {
     credentials: 'include',
     method: 'GET',
   });
+  window.location.assign('index.html');
 };

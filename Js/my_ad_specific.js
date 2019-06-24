@@ -47,7 +47,7 @@ window.addEventListener('DOMContentLoaded', async () => {
       document.querySelector('#itemPrice').textContent = `Price: N ${car.price}`;
       document.querySelector('#manufacturer').textContent = car.manufacturer;
       document.querySelector('#model').textContent = car.model;
-      document.querySelector('#bodyType').textContent = car.bodyType;
+      document.querySelector('#bodyType').textContent = car.body_type;
       document.querySelector('#state').textContent = car.state;
       document.querySelector('#status').textContent = car.status;
       document.querySelector('#itemDescription').textContent = `Up for sale! - ${car.manufacturer} ${car.model}`;
@@ -133,4 +133,5 @@ const logout = async () => {
     credentials: 'include',
     method: 'GET',
   });
+  window.location.assign('index.html');
 };

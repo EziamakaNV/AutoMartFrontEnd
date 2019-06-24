@@ -40,3 +40,11 @@ const createAd = async () => {
     errorMessage.style.display = 'block';
   }
 };
+
+const logout = async () => {
+  await fetch('https://automobile-mart.herokuapp.com/logout', {
+    credentials: 'include',
+    method: 'GET',
+  });
+  window.location.assign('index.html');
+};
