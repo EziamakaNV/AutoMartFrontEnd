@@ -20,61 +20,69 @@
                     <div class="bar3"></div>
                 </div>
                 <div id="myDropDown" class="dropdown-content">
+                    <a href="profile_page.html">View Ads</a>
                     <a href="post_ad.html">Create Ads</a>
                     <a href="my_ads.html">My Ads</a>
                     <a href='my_orders.html'>My Orders</a>
-                    <a href="landing_page.html">Logout</a>
+                    <a href="#" onclick='logout()'>Logout</a>
                 </div>
             </div>
-            <a href="my_orders.html" class="previousIcon anchor-tag logo">←</a>
-            <a href='my_orders.html' class='anchor-tag logo'>My Order</a>
+            <a href="profile_page.html" class="previousIcon anchor-tag logo">←</a>
+            <a href='profile_page.html' class='anchor-tag logo'>My Order</a>
         </div>
         <nav class='flex-container justify-right'>
             <ul>
+                <li><a href="profile_page.html">View Ads</a></li>
                 <li><a href="post_ad.html">Create Ad</a></li>
                 <li><a href="my_ads.html">My Ads</a></li>
                 <li><a href='my_orders.html'>My Orders</a></li>
-                <li><a href="landing_page.html">Logout</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </nav>
     </header>
     <main>
+        <div class="error-message-div"></div>
         <section id="spec-car-ad-cntnr">
             <div class='scac-div1'>
                 <figure>
-                    <img class='ad-img' src='Images/toyota_camry.jpg'>
+                    <img class='ad-img' src=''>
                 </figure>
             </div>
             <div class="divider scac-div1"></div>
             <div class="scac-div1">
-                <h3 id="itemPrice">N1,500,000</h3>
-                <p class="" id="itemDescription">Neat Reg Toyota Camry</p>
+                <h3 id="itemPrice"></h3>
+                <p class="" id="itemDescription"></p>
             </div>
             <div class="divider scac-div1"></div>
             <div class="scac-div1">
-                <h3>Details</h3>
                 <div class="scac-div2">
                     <span>Make</span>
-                    <span class='scac-span'>Toyota</span>
+                    <span id = 'manufacturer' class='scac-span'></span>
                 </div>
                 <div class="scac-div2">
                     <span>Model</span>
-                    <span class='scac-span'>Camry</span>
+                    <span id = 'model' class='scac-span'></span>
                 </div>
                 <div class="scac-div2">
                     <span>Body Type</span>
-                    <span class='scac-span'>Car</span>
+                    <span id = 'bodyType' class='scac-span'></span>
                 </div>
                 <div class="scac-div2">
                     <span>State</span>
-                    <span class='scac-span'>Used</span>
+                    <span id = 'state' class='scac-span'></span>
+                </div>
+                <div class="scac-div2">
+                    <span>Order Status</span>
+                    <span id = 'status' class='scac-span'></span>
+                </div>
+                <div class="scac-div2">
+                    <span>Amount offered</span>
+                    <span id = 'amountOffered' class='scac-span'></span>
                 </div>
                 <div class="divider scac-div1"></div>
                 <div class="scac-div2">
                     <h3>Description</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos veniam, ullam laudantium laborum
-                        libero ex magnam consequatur deserunt voluptatum, temporibus beatae voluptate assumenda est?
-                        Quibusdam dicta blanditiis nihil fugiat unde!</p>
+                    <p id = 'description'></p>
                 </div>
             </div>
             <div class="divider scac-div1"></div>
@@ -86,16 +94,16 @@
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <h1 class='call-to-action'>UPDATE PURCHASE ORDER</h1>
-                <h2 class='call-to-action'>FOR: XXX XXX</h2>
-                <h2 class='call-to-action'>PRICE: 999999</h2>
-                <h2 class='call-to-action'>INITIAL OFFER: 000000</h2>
-                    <form class='form-structure'>
+                <h2 class='call-to-action' id="for">FOR: XXX XXX</h2>
+                <h2 class='call-to-action' id="m-price">PRICE: 999999</h2>
+                <h2 class='call-to-action' id='m-initial-offer'>INITIAL OFFER: 000000</h2>
+                    <form class='form-structure' onsubmit="event.preventDefault()">
                         <h2 class='form-headers'>OFFER</h2>
                         <div>
-                            <label for='offered_price'>New Price</label>
+                            <label for='offered_price'>New Offer</label>
                             <input type='number' required name='offered_price' id='offeredPrice'>
                         </div>
-                        <button class='button'>UPDATE OFFER</button>
+                        <button class='button' onclick="updateOffer()">UPDATE OFFER</button>
                     </form>
             </div>
         </div>
@@ -105,7 +113,12 @@
             <span>AutoMart C 2019</span>
         </div>
     </footer>
-    <script src='Js/my_ad_specific.js'></script>
+    <div id="loaderModal" class="modal">
+        <div class="modal-content filter loader">
+            
+        </div>
+    </div>
+    <script src='Js/my_order_specific.js'></script>
 </body>
 
 </html>

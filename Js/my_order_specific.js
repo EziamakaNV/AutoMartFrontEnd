@@ -1,9 +1,4 @@
 /* eslint-disable linebreak-style */
-const menuBarAnimation = (menu) => {
-  menu.classList.toggle('change');
-  document.getElementById('myDropDown').classList.toggle('show');
-};
-
 const modal = document.getElementById('myModal');
 
 const btn = document.getElementById('myBtn');
@@ -24,39 +19,19 @@ window.onclick = (event) => {
   }
 };
 
-const modal2 = document.getElementById('myModal2');
-
-const btn2 = document.getElementById('myBtn2');
-
-const span2 = document.getElementsByClassName('close2')[0];
-
-btn2.onclick = () => {
-  modal2.style.display = 'block';
-};
-
-span2.onclick = () => {
-  modal2.style.display = 'none';
-};
-
-window.onclick = (event) => {
-  if (event.target === modal2) {
-    modal2.style.display = 'none';
-  }
-};
-
 const errorMessage = document.querySelector('.error-message-div');
 
 const loader = document.querySelector('#loaderModal');
 
 // Get carId from query string
 const urlParams = new URLSearchParams(window.location.search);
-const carId = urlParams.get('car_id');
+const orderId = urlParams.get('order_id');
 
 window.addEventListener('DOMContentLoaded', async () => {
   errorMessage.style.display = 'block';
   try {
     loader.style.display = 'block';
-    const response = await fetch(`https://automobile-mart.herokuapp.com/api/v2/car/${carId}`, {
+    const response = await fetch(`https://automobile-mart.herokuapp.com/api/v2/order/myOrder/${orderId}`, {
       credentials: 'include',
       method: 'GET',
     });
@@ -69,10 +44,12 @@ window.addEventListener('DOMContentLoaded', async () => {
       document.querySelector('#model').textContent = car.model;
       document.querySelector('#bodyType').textContent = car.body_type;
       document.querySelector('#state').textContent = car.state;
+      document.querySelector('#status').textContent = car.order_status;
+      document.querySelector('#amountOffered').textContent = car.amount_offered;
+      document.querySelector('#m-price').textContent = `PRICE: N ${car.price}`;
+      document.querySelector('#m-initial-offer').textContent = `INITIAL OFFER: ${car.amount_offered}`;
       document.querySelector('#itemDescription').textContent = `Up for sale! - ${car.manufacturer} ${car.model}`;
       document.querySelector('#description').textContent = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos veniam, ullam laudantium laborum libero ex magnam consequatur deserunt voluptatum, temporibus beatae voluptate assumenda est? Quibusdam dicta blanditiis nihil fugiat unde';
-      document.querySelector('#po-description').textContent = `FOR: ${car.manufacturer} ${car.model}`;
-      document.querySelector('#po-price').textContent = `PRICE: N ${car.price}`;
       loader.style.display = 'none';
       errorMessage.style.display = 'none';
     } else {
@@ -80,65 +57,27 @@ window.addEventListener('DOMContentLoaded', async () => {
       loader.style.display = 'none';
     }
   } catch (error) {
-    errorMessage.textContent = 'Error retreiving car details';
+    errorMessage.textContent = error;
   }
 });
 
-const placeOffer = async () => {
+const updateOffer = async () => {
   try {
     loader.style.display = 'block';
-    const body = { carId: Number(carId), amount: Number(document.querySelector('#offeredPrice').value) };
-    const response = await fetch('https://automobile-mart.herokuapp.com/api/v2/order', {
+    const body = { amount: Number(document.querySelector('#offeredPrice').value) };
+    const response = await fetch(`https://automobile-mart.herokuapp.com/api/v2/order/${orderId}/price`, {
       credentials: 'include',
-      method: 'POST',
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(body),
     });
     const responseBody = await response.json();
-    if (response.status === 201) {
-      loader.style.display = 'none';
-      modal2.style.display = 'none';
-      errorMessage.textContent = 'Purchase order created successfully';
-      errorMessage.style.backgroundColor = 'white';
-      errorMessage.style.color = 'green';
-      errorMessage.style.display = 'block';
-    } else {
-      loader.style.display = 'none';
-      modal2.style.display = 'none';
-      errorMessage.textContent = responseBody.error;
-      errorMessage.style.display = 'block';
-    }
-  } catch (error) {
-    loader.style.display = 'none';
-    modal2.style.display = 'none';
-    errorMessage.textContent = error;
-    errorMessage.style.display = 'block';
-  }
-};
-
-const sendComplaint = async () => {
-  try {
-    loader.style.display = 'block';
-    const body = {
-      carId: Number(carId),
-      reason: document.querySelector('#flagReason').value,
-      description: document.querySelector('#flagDescription').value,
-    };
-    const response = await fetch('https://automobile-mart.herokuapp.com/api/v2/flag', {
-      credentials: 'include',
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    });
-    const responseBody = await response.json();
-    if (response.status === 201) {
+    if (response.status === 200) {
       loader.style.display = 'none';
       modal.style.display = 'none';
-      errorMessage.textContent = 'Flag successful';
+      errorMessage.textContent = 'Purchase order updated successfully. Please refresh';
       errorMessage.style.backgroundColor = 'white';
       errorMessage.style.color = 'green';
       errorMessage.style.display = 'block';

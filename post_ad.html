@@ -18,7 +18,7 @@
                         <div class="bar3"></div>
                     </div>
                     <div id="myDropDown" class="dropdown-content">
-                        <a href="profile_page.html">Profile</a>
+                        <a href="profile_page.html">View Ads</a>
                         <a href="my_ads.html">My Ads</a>
                         <a href='my_orders.html'>My Orders</a>
                         <a href="#" onclick="logout()">Logout</a>
@@ -29,10 +29,10 @@
             </div>
             <nav class='flex-container justify-right'>
                 <ul>
-                    <li><a href="profile_page.html">Profile</a></li>
+                    <li><a href="profile_page.html">View Ads</a></li>
                     <li><a href="my_ads.html">My Ads</a></li>
                     <li><a href='my_orders.html'>My Orders</a></li>
-                    <li><a href="landing_page.html">Logout</a></li>
+                    <li><a href="#" onclick="logout()">Logout</a></li>
                 </ul>
             </nav>
         </header>
@@ -40,7 +40,7 @@
         <h1 class="call-to-action">POST YOUR CAR AD</h1>
         <h1 class='error-message-div'>Issue getting car details</h1>
         <section id='post-ad-container'>
-            <form id= 'form' class='form-structure' action="http://localhost:5000/api/v2/car" enctype="multipart/form-data" method="POST" onsubmit="event.preventDefault()">
+            <form id= 'form' class='form-structure' enctype="multipart/form-data" method="POST" onsubmit="event.preventDefault()">
                 <h2 class='form-headers'>CAR DETAILS</h2>
                 <div>
                     <label for='manufacturer'>Manufacturer</label>
