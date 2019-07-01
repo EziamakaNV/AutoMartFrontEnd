@@ -32,6 +32,8 @@ Before running the project, install the following
 - npm install
 - Start a static live server on vscode
 
+### Front-End App
+[https://eziamakanv.github.io/AutoMartFrontEnd](https://eziamakanv.github.io/AutoMartFrontEnd)
 
 ### Pivotal Tracker stories
 [https://www.pivotaltracker.com/n/projects/2345861](https://www.pivotaltracker.com/n/projects/2345861)
