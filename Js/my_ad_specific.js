@@ -43,7 +43,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     const responseBody = await response.json();
     if (response.status === 200) {
       const car = responseBody.data;
-      document.querySelector('.ad-img').src = car.image_url || '/Images/toyota_camry.jpg';
+      document.querySelector('.ad-img').src = car.image_url || 'Images/toyota_camry.jpg';
       document.querySelector('#itemPrice').textContent = `Price: N ${car.price}`;
       document.querySelector('#manufacturer').textContent = car.manufacturer;
       document.querySelector('#model').textContent = car.model;

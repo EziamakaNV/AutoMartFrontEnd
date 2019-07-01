@@ -20,7 +20,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     if (response.status === 200) {
       responseBody.data.forEach((car) => {
         adContainer.insertAdjacentHTML('afterbegin', `
-                <a href='/my_orders_specific.html?order_id=${car.order_id}'>
+                <a href='my_orders_specific.html?order_id=${car.order_id}'>
                 <div class="pr-ad" id="${car.order_id}">
                     <figure>
                         <img class='ad-img' src='${car.image_url || 'Images/toyota_camry.jpg'}' alt = 'Car'>
