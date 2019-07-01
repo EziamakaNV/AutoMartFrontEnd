@@ -96,7 +96,7 @@ const filter = async () => {
         }
         responseBody.data.forEach((car) => {
           adContainer.insertAdjacentHTML('afterbegin', `
-            <a href='/specific_car.html?car_id=${car.id}'>
+            <a href='specific_car.html?car_id=${car.id}'>
             <div class="pr-ad" id="${car.id}">
                 <figure>
                     <img class='ad-img' src='${car.image_url || 'Images/toyota_camry.jpg'}' alt = 'Car'>
