@@ -37,7 +37,7 @@ Before running the project, install the following
 [https://www.pivotaltracker.com/n/projects/2345861](https://www.pivotaltracker.com/n/projects/2345861)
 
 ### Hosted App API docs
-[https://automobile-mart.herokuapp.com/api/v1/docs](https://automobile-mart.herokuapp.com/api/v2/docs)
+[https://automobile-mart.herokuapp.com/api/v1/docs](https://automobile-mart.herokuapp.com/api/v1/docs)
 
 ### UI Template
 [https://eziamakanv.github.io/AutoMart](https://eziamakanv.github.io/AutoMart)

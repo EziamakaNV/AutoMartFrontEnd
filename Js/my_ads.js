@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   errorMessage.style.display = 'block';
   try {
     loader.style.display = 'block';
-    const response = await fetch('https://automobile-mart.herokuapp.com/api/v2/car/myCar', {
+    const response = await fetch('https://automobile-mart.herokuapp.com/api/v1/car/myCar', {
       credentials: 'include',
       method: 'GET',
     });

@@ -1,4 +1,9 @@
 /* eslint-disable linebreak-style */
+const menuBarAnimation = (menu) => {
+  menu.classList.toggle('change');
+  document.getElementById('myDropDown').classList.toggle('show');
+};
+
 const modal = document.getElementById('myModal');
 
 const btn = document.getElementById('myBtn');
@@ -23,7 +28,7 @@ const errorMessage = document.querySelector('.error-message-div');
 
 const loader = document.querySelector('#loaderModal');
 
-// Get carId from query string
+// Get car_id from query string
 const urlParams = new URLSearchParams(window.location.search);
 const orderId = urlParams.get('order_id');
 
@@ -31,7 +36,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   errorMessage.style.display = 'block';
   try {
     loader.style.display = 'block';
-    const response = await fetch(`https://automobile-mart.herokuapp.com/api/v2/order/myOrder/${orderId}`, {
+    const response = await fetch(`https://automobile-mart.herokuapp.com/api/v1/order/myOrder/${orderId}`, {
       credentials: 'include',
       method: 'GET',
     });
@@ -42,7 +47,7 @@ window.addEventListener('DOMContentLoaded', async () => {
       document.querySelector('#itemPrice').textContent = `Price: N ${car.price}`;
       document.querySelector('#manufacturer').textContent = car.manufacturer;
       document.querySelector('#model').textContent = car.model;
-      document.querySelector('#bodyType').textContent = car.body_type;
+      document.querySelector('#body_type').textContent = car.body_type;
       document.querySelector('#state').textContent = car.state;
       document.querySelector('#status').textContent = car.order_status;
       document.querySelector('#amountOffered').textContent = car.amount_offered;
@@ -64,8 +69,8 @@ window.addEventListener('DOMContentLoaded', async () => {
 const updateOffer = async () => {
   try {
     loader.style.display = 'block';
-    const body = { amount: Number(document.querySelector('#offeredPrice').value) };
-    const response = await fetch(`https://automobile-mart.herokuapp.com/api/v2/order/${orderId}/price`, {
+    const body = { price: Number(document.querySelector('#offeredPrice').value) };
+    const response = await fetch(`https://automobile-mart.herokuapp.com/api/v1/order/${orderId}/price`, {
       credentials: 'include',
       method: 'PATCH',
       headers: {

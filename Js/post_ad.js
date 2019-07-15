@@ -15,7 +15,7 @@ const createAd = async () => {
   // Create new form data (HTML form element) object
   const formData = new FormData(form);
   try {
-    const response = await fetch('https://automobile-mart.herokuapp.com/api/v2/car', {
+    const response = await fetch('https://automobile-mart.herokuapp.com/api/v1/car', {
       credentials: 'include',
       method: 'POST',
       body: formData,

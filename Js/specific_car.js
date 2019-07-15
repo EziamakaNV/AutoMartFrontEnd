@@ -48,15 +48,15 @@ const errorMessage = document.querySelector('.error-message-div');
 
 const loader = document.querySelector('#loaderModal');
 
-// Get carId from query string
+// Get car_id from query string
 const urlParams = new URLSearchParams(window.location.search);
-const carId = urlParams.get('car_id');
+const car_id = urlParams.get('car_id');
 
 window.addEventListener('DOMContentLoaded', async () => {
   errorMessage.style.display = 'block';
   try {
     loader.style.display = 'block';
-    const response = await fetch(`https://automobile-mart.herokuapp.com/api/v2/car/${carId}`, {
+    const response = await fetch(`https://automobile-mart.herokuapp.com/api/v1/car/${car_id}`, {
       credentials: 'include',
       method: 'GET',
     });
@@ -67,7 +67,7 @@ window.addEventListener('DOMContentLoaded', async () => {
       document.querySelector('#itemPrice').textContent = `Price: N ${car.price}`;
       document.querySelector('#manufacturer').textContent = car.manufacturer;
       document.querySelector('#model').textContent = car.model;
-      document.querySelector('#bodyType').textContent = car.body_type;
+      document.querySelector('#body_type').textContent = car.body_type;
       document.querySelector('#state').textContent = car.state;
       document.querySelector('#itemDescription').textContent = `Up for sale! - ${car.manufacturer} ${car.model}`;
       document.querySelector('#description').textContent = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos veniam, ullam laudantium laborum libero ex magnam consequatur deserunt voluptatum, temporibus beatae voluptate assumenda est? Quibusdam dicta blanditiis nihil fugiat unde';
@@ -87,8 +87,8 @@ window.addEventListener('DOMContentLoaded', async () => {
 const placeOffer = async () => {
   try {
     loader.style.display = 'block';
-    const body = { carId: Number(carId), amount: Number(document.querySelector('#offeredPrice').value) };
-    const response = await fetch('https://automobile-mart.herokuapp.com/api/v2/order', {
+    const body = { car_id: Number(car_id), amount: Number(document.querySelector('#offeredPrice').value) };
+    const response = await fetch('https://automobile-mart.herokuapp.com/api/v1/order', {
       credentials: 'include',
       method: 'POST',
       headers: {
@@ -122,11 +122,11 @@ const sendComplaint = async () => {
   try {
     loader.style.display = 'block';
     const body = {
-      carId: Number(carId),
+      car_id: Number(car_id),
       reason: document.querySelector('#flagReason').value,
       description: document.querySelector('#flagDescription').value,
     };
-    const response = await fetch('https://automobile-mart.herokuapp.com/api/v2/flag', {
+    const response = await fetch('https://automobile-mart.herokuapp.com/api/v1/flag', {
       credentials: 'include',
       method: 'POST',
       headers: {
