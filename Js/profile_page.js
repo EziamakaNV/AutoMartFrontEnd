@@ -31,7 +31,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   errorMessage.style.display = 'block';
   try {
     loader.style.display = 'block';
-    const response = await fetch('https://automobile-mart.herokuapp.com/api/v2/car?status=available', {
+    const response = await fetch('https://automobile-mart.herokuapp.com/api/v1/car?status=available', {
       credentials: 'include',
       method: 'GET',
     });
@@ -75,7 +75,7 @@ const filter = async () => {
   loader.style.display = 'block';
 
   try {
-    const response = await fetch(`https://automobile-mart.herokuapp.com/api/v2/car?status=available&min_price=${minPrice.value}&max_price=${maxPrice.value}`, {
+    const response = await fetch(`https://automobile-mart.herokuapp.com/api/v1/car?status=available&min_price=${minPrice.value}&max_price=${maxPrice.value}`, {
       credentials: 'include',
       method: 'GET',
     });
@@ -145,7 +145,7 @@ const getNameFromCookie = (cname) => {
 window.addEventListener('DOMContentLoaded', () => {
   const userJSON = getNameFromCookie('user');
   const user = JSON.parse(userJSON);
-  document.querySelector('#client-name').textContent = `Welcome ${user.firstName} ${user.lastName}`;
+  document.querySelector('#client-name').textContent = `Welcome ${user.first_name} ${user.last_name}`;
 });
 
 const logout = async () => {

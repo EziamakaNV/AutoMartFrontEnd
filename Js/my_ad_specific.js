@@ -28,15 +28,15 @@ const errorMessage = document.querySelector('.error-message-div');
 
 const loader = document.querySelector('#loaderModal');
 
-// Get carId from query string
+// Get car_id from query string
 const urlParams = new URLSearchParams(window.location.search);
-const carId = urlParams.get('car_id');
+const car_id = urlParams.get('car_id');
 
 window.addEventListener('DOMContentLoaded', async () => {
   errorMessage.style.display = 'block';
   try {
     loader.style.display = 'block';
-    const response = await fetch(`https://automobile-mart.herokuapp.com/api/v2/car/${carId}`, {
+    const response = await fetch(`https://automobile-mart.herokuapp.com/api/v1/car/${car_id}`, {
       credentials: 'include',
       method: 'GET',
     });
@@ -47,7 +47,7 @@ window.addEventListener('DOMContentLoaded', async () => {
       document.querySelector('#itemPrice').textContent = `Price: N ${car.price}`;
       document.querySelector('#manufacturer').textContent = car.manufacturer;
       document.querySelector('#model').textContent = car.model;
-      document.querySelector('#bodyType').textContent = car.body_type;
+      document.querySelector('#body_type').textContent = car.body_type;
       document.querySelector('#state').textContent = car.state;
       document.querySelector('#status').textContent = car.status;
       document.querySelector('#itemDescription').textContent = `Up for sale! - ${car.manufacturer} ${car.model}`;
@@ -67,7 +67,7 @@ const markAsSold = async () => {
   try {
     loader.style.display = 'block';
     const body = { status: 'sold' };
-    const response = await fetch(`https://automobile-mart.herokuapp.com/api/v2/car/${carId}/status`, {
+    const response = await fetch(`https://automobile-mart.herokuapp.com/api/v1/car/${car_id}/status`, {
       credentials: 'include',
       method: 'PATCH',
       headers: {
@@ -98,7 +98,7 @@ const updatePrice = async () => {
   try {
     loader.style.display = 'block';
     const body = { price: document.querySelector('#price').value };
-    const response = await fetch(`https://automobile-mart.herokuapp.com/api/v2/car/${carId}/price`, {
+    const response = await fetch(`https://automobile-mart.herokuapp.com/api/v1/car/${car_id}/price`, {
       credentials: 'include',
       method: 'PATCH',
       headers: {
